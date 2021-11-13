@@ -76,19 +76,19 @@ function changeHTML() {
 
 <label class="header-userName" for="userName"> User Name </label>
 <div  class="input-userName">
-<input minlength="6" maxlength="32" type="text" required name="userName" id="userName" placeholder="Type your username"/>
+<input minlength="7" maxlength="31" type="text" required name="userName" id="userName" placeholder="Type your username(from 7 to 31 character)"/>
  <i class="user-icon fas fa-user"></i>
 </div>
 <label class="header-password" for="password" >Password</label>
 <div class="input-password">
-<input minlength="6" maxlength="32" type="password" required name="password" id="password" placeholder="Type your password"/>
+<input minlength="7" maxlength="31" type="password" required name="password" id="password" placeholder="Type your password(from 7 to 31 character)"/>
 <i class="password-icon fas fa-lock"></i>
  <div class="view-icon">
        <i class="far fa-eye-slash"></i>
  </div> 
  <label class="header-confirmPassword" for="confirmPassword" >Confirm Password</label>
  <div class="input-password-confirm">
-<input minlength="6" maxlength="32" type="password" required name="confirmPassword" id="confirmPassword" placeholder="Type your password"/>
+<input minlength="7" maxlength="31" type="password" required name="confirmPassword" id="confirmPassword" placeholder="Type your password(from 7 to 31 character)"/>
 <i class="password-icon fas fa-lock"></i>
  <div class="view-icon-confirm">
        <i class="far fa-eye-slash"></i>
@@ -200,7 +200,8 @@ function tosSendInfoRegister() {
         document.querySelector(".main").style.height = "100vh";
         document.querySelector(".container").outerHTML =
           '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">SUCCESS</h2>';
-      } else {
+      } 
+      else {
         alert("Name or passwordWord or confirm is not correct !");
         return;
         // Dùng vòng lặp lồng nhau ko chay;
