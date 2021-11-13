@@ -157,7 +157,7 @@ function tosSendInfoRegister() {
           "URL('anhnen.jpg')";
         document.querySelector(".main").style.height = "100vh";
         document.querySelector(".container").outerHTML =
-          '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">Success</h2>';
+          '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">Register account success</h2>';
       } else {
         alert("Name or passwordWord or confirm is not correct !");
         // Dùng vòng lặp lồng nhau ko chay;
