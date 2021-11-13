@@ -182,9 +182,10 @@ function tosSendInfoRegister() {
           "URL('anhnen.jpg')";
         document.querySelector(".main").style.height = "100vh";
         document.querySelector(".container").outerHTML =
-          '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">Register account success</h2>';
+          '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">SUCCESS</h2>';
       } else {
         alert("Name or passwordWord or confirm is not correct !");
+        return;
         // Dùng vòng lặp lồng nhau ko chay;
         // if (userName.length > 6 && userName.length < 32==false) {
         //   alert("Tên nhập vào chưa đúng");
@@ -196,6 +197,9 @@ function tosSendInfoRegister() {
         //   alert("Password và confirmPassword khác nhau");
         // }
       }
+      setTimeout(function () {
+        alert("Register account success !");
+      }, 500);
     };
   }
 }
