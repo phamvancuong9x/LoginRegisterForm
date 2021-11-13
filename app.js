@@ -71,6 +71,7 @@ function changeHTML() {
       document.querySelector("#link-convert-html").classList.value ==
       "create-account-link"
     ) {
+      document.querySelector('title').innerText='Register'
       document.querySelector(".content").innerHTML = `
 <div class="content__title"><h1>Register</h1></div>
 
@@ -140,6 +141,7 @@ function changeHTML() {
 function toConvertLogin(){
 if(document.querySelector('.content__title').innerText=='Register'){
   document.querySelector("#link-convert-html").onclick = function () {
+  document.querySelector('title').innerText='Login'
   document.querySelector(".content").innerHTML = pagesLogInHtml;
   hoverElmClassBtn__bgColor();
   changeViewIcon();
@@ -150,13 +152,11 @@ if(document.querySelector('.content__title').innerText=='Register'){
 }}
 }
 toConvertLogin()
-
-
 hoverElmClassBtn__bgColor();
 changeViewIcon();
 changeHTML();
 tosSendInfoRegister();
-//
+
 // var user_name = document.querySelector(".input-userName>input");
 // phải khai báo bên trong hàm ko gia trị =undefine;
 function checkInfoRegister() {
