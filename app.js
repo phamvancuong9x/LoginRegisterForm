@@ -8,6 +8,31 @@ function hoverElmClassBtn__bgColor() {
     elementClassBtn__bgColor.style.left = "0";
   };
 }
+function hoverInputBorder() {
+  let ElmNameInput = document.querySelector(".input-userName>input");
+  let ElmPasswordInput = document.querySelector(".input-password>input");
+  let ElmConfirmPasswordInput = document.querySelector(
+    ".input-password-confirm>input"
+  );
+  ElmNameInput.onclick = function () {
+    ElmNameInput.style.borderColor = "#333";
+    ElmPasswordInput.style.borderColor = "#888";
+    ElmConfirmPasswordInput.style.borderColor = "#888";
+  };
+  ElmPasswordInput.onclick = function () {
+    ElmPasswordInput.style.borderColor = "#333";
+    ElmNameInput.style.borderColor = "#888";
+    ElmConfirmPasswordInput.style.borderColor = "#888";
+  };
+  if (ElmConfirmPasswordInput) {
+    ElmConfirmPasswordInput.onclick = function () {
+      ElmPasswordInput.style.borderColor = "#888";
+      ElmNameInput.style.borderColor = "#888";
+      ElmConfirmPasswordInput.style.borderColor = "#333";
+    };
+  }
+}
+hoverInputBorder();
 //
 function changeViewIcon() {
   let viewOn = document.querySelector(".view-icon");
@@ -101,7 +126,7 @@ function changeHTML() {
       changeViewIcon();
       changeViewIconConfirmPassword();
       tosSendInfoRegister();
-      return;
+      hoverInputBorder();
     } else {
       document.querySelector(".content").innerHTML = pagesLogInHtml;
       return;
