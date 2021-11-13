@@ -50,6 +50,7 @@ function changeViewIcon() {
 //
 function changeViewIconConfirmPassword() {
   let viewOn = document.querySelector(".view-icon-confirm");
+  if(viewOn){
   let elementPassword = document.getElementById("confirmPassword");
   viewOn.onclick = function () {
     if (viewOn.innerHTML == '<i class="far fa-eye-slash"></i>') {
@@ -61,7 +62,7 @@ function changeViewIconConfirmPassword() {
     }
   };
 }
-
+}
 let pagesLogInHtml = document.querySelector(".content").innerHTML;
 //
 function changeHTML() {
@@ -127,13 +128,29 @@ function changeHTML() {
       changeViewIconConfirmPassword();
       tosSendInfoRegister();
       hoverInputBorder();
-    } else {
-      document.querySelector(".content").innerHTML = pagesLogInHtml;
-      return;
-    }
+      toConvertLogin()
+    } 
+    // else {
+    //   document.querySelector(".content").innerHTML = pagesLogInHtml;
+    // }
   };
 }
 //
+// 
+function toConvertLogin(){
+if(document.querySelector('.content__title').innerText=='Register'){
+  document.querySelector("#link-convert-html").onclick = function () {
+  document.querySelector(".content").innerHTML = pagesLogInHtml;
+  hoverElmClassBtn__bgColor();
+  changeViewIcon();
+  changeViewIconConfirmPassword();
+  tosSendInfoRegister();
+  hoverInputBorder();
+  changeHTML();
+}}
+}
+toConvertLogin()
+
 
 hoverElmClassBtn__bgColor();
 changeViewIcon();
@@ -158,7 +175,7 @@ function checkInfoRegister() {
     password === confirmPassword
   );
 }
-//
+
 function tosSendInfoRegister() {
   if (document.querySelector(".content__title>h1").innerText == "Register") {
     let user_name = document.querySelector(".input-userName>input").value;
@@ -166,7 +183,7 @@ function tosSendInfoRegister() {
     let confirmPassword = document.querySelector(
       ".input-password-confirm>input"
     ).value;
-    let containerHTML = document.querySelector(".container").innerHTML;
+    // let containerHTML = document.querySelector(".container").innerHTML;
     document.querySelector(".btn__login").onclick = function () {
       if (checkInfoRegister()) {
         document
