@@ -124,6 +124,7 @@ input {
   color: #fff;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .btn__login :hover ~ .btn__bgColor {
   left: -100%;
