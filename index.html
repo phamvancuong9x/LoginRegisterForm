@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- <script defer src="app.js"></script> -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="imageBgColor1"></div>
+      <div class="imageBgColor2"></div>
+      <div class="imageBgColor3"></div>
+      <div class="container">
+        <div class="content">
+          <div class="content__title"><h1>Log In</h1></div>
+          <form action="">
+          <label class="header-userName" for="userName"> User Name </label>
+          <div  class="input-userName">
+          <input minlength="6" maxlength="32" type="text" required name="userName" id="userName" placeholder="Type your username"/>
+           <i class="user-icon fas fa-user"></i>
+        </div>
+          <label class="header-password" for="password" >Password</label>
+          <div class="input-password">
+          <input minlength="6" maxlength="32" type="password required name="password" id="password" placeholder="Type your password"/>
+          <i class="password-icon fas fa-lock"></i>
+           <div class="view-icon">
+                 <i class="far fa-eye-slash"></i>
+           </div> 
+        </div>
+          <a href="#"class="forgot-password">Forgot password?</a>
+          <div class="big-btn">
+            <div class="btn__bgColor"></div>
+            <input class="btn__login" type="submit" value="LOGIN">
+          </div>
+        </form>
+          <div class="social">
+              <div class="socials__header"><p>Or Using</p></div>
+          </div>
+          <div class="social__container">
+          <div class="social__item facebook-item">
+            <i class="social__facebook-icon fab fa-facebook-f"></i>
+            <p class="social__text">Facebook</p>
+          </div>
+          <div class="social__item google-item">
+            <i class="social__google-icon fab fa-google"></i>
+            <p class="social__text">Google</p>
+          </div>
+          <div class="social__item twitter-item">
+            <i class="social__twitter-icon fab fa-twitter"></i>
+            <p class="social__text">Twitter</p>
+          </div>
+        </div>
+        <div class="create-account">
+            <p class="create-account__text">Have not account yet?
+                <span id='link-convert-html' class="create-account-link">Register</span>
+            </p>
+        </div>
+        <script src="app.js"></script>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
