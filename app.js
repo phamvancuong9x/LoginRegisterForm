@@ -1,223 +1,239 @@
+let getElmIdLogin = document.querySelector("#login");
+let getElmIdRegister = document.querySelector("#Register");
+let elementClassBtn__login = document.querySelector(".btn__login");
+let elementClassBtn__register = document.querySelector(".btn__register");
+let elementClassBtn__bgColor = document.querySelector(".btn__bgColor");
+let elementClassBtns = document.querySelectorAll(".btn");
+let elementClassBtn__bgColors = document.querySelectorAll(".btn__bgColor");
+let getElmIdLinkCovertHtmls = document.querySelectorAll(".link-convert-html");
+
+// hàm hover cho nút Login
 function hoverElmClassBtn__bgColor() {
-  let elementClassBtn__login = document.querySelector(".btn__login");
-  let elementClassBtn__bgColor = document.querySelector(".btn__bgColor");
-  elementClassBtn__login.onmouseover = function () {
-    elementClassBtn__bgColor.style.left = "-100%";
-  };
-  elementClassBtn__login.onmouseout = function () {
-    elementClassBtn__bgColor.style.left = "0";
-  };
-}
-function hoverInputBorder() {
-  let ElmNameInput = document.querySelector(".input-userName>input");
-  let ElmPasswordInput = document.querySelector(".input-password>input");
-  let ElmConfirmPasswordInput = document.querySelector(
-    ".input-password-confirm>input"
-  );
-  ElmNameInput.onclick = function () {
-    ElmNameInput.style.borderColor = "#333";
-    ElmPasswordInput.style.borderColor = "#888";
-    ElmConfirmPasswordInput.style.borderColor = "#888";
-  };
-  ElmPasswordInput.onclick = function () {
-    ElmPasswordInput.style.borderColor = "#333";
-    ElmNameInput.style.borderColor = "#888";
-    ElmConfirmPasswordInput.style.borderColor = "#888";
-  };
-  if (ElmConfirmPasswordInput) {
-    ElmConfirmPasswordInput.onclick = function () {
-      ElmPasswordInput.style.borderColor = "#888";
-      ElmNameInput.style.borderColor = "#888";
-      ElmConfirmPasswordInput.style.borderColor = "#333";
+  for (let i = 0; i < 2; i++) {
+    elementClassBtns[i].onmouseover = function () {
+      elementClassBtn__bgColors[i].style.left = "-100%";
+    };
+    elementClassBtns[i].onmouseout = function () {
+      elementClassBtn__bgColors[i].style.left = "0";
     };
   }
 }
-hoverInputBorder();
+//Hàm click để  đóng các thông báo lỗi;
+let ElmNameError1s = document.querySelectorAll(".userName-error1");
+let ElmNameError2s = document.querySelectorAll(".userName-error2");
+let ElmPasswordError1s = document.querySelectorAll(".password-error1");
+let ElmPasswordError2s = document.querySelectorAll(".password-error2");
+let ElmConfirmPasswordError1 = document.querySelector(
+  ".confirm-password-error1"
+);
+let ElmConfirmPasswordError2 = document.querySelector(
+  ".confirm-password-error2"
+);
+
 //
-function changeViewIcon() {
-  let viewOn = document.querySelector(".view-icon");
-  let elementPassword = document.getElementById("password");
-  viewOn.onclick = function () {
-    if (viewOn.innerHTML == '<i class="far fa-eye-slash"></i>') {
-      viewOn.innerHTML = '<i class="far fa-eye"></i>';
-      elementPassword.type = "";
-    } else {
-      viewOn.innerHTML = '<i class="far fa-eye-slash"></i>';
-      elementPassword.type = "password";
+
+function closeNotify() {
+  document.querySelector("body").addEventListener("click", function (e) {
+    for (let i = 0; i < 2; i++) {
+      ElmNameError1s[i].style.display = "none";
+      ElmNameError2s[i].style.display = "none";
+      ElmPasswordError1s[i].style.display = "none";
+      ElmPasswordError2s[i].style.display = "none";
     }
-  };
-}
-//
-function changeViewIconConfirmPassword() {
-  let viewOn = document.querySelector(".view-icon-confirm");
-  if(viewOn){
-  let elementPassword = document.getElementById("confirmPassword");
-  viewOn.onclick = function () {
-    if (viewOn.innerHTML == '<i class="far fa-eye-slash"></i>') {
-      viewOn.innerHTML = '<i class="far fa-eye"></i>';
-      elementPassword.type = "";
-    } else {
-      viewOn.innerHTML = '<i class="far fa-eye-slash"></i>';
-      elementPassword.type = "password";
-    }
-  };
-}
-}
-let pagesLogInHtml = document.querySelector(".content").innerHTML;
-//
-function changeHTML() {
-  document.querySelector("#link-convert-html").onclick = function () {
-    if (
-      document.querySelector("#link-convert-html").classList.value ==
-      "create-account-link"
-    ) {
-      document.querySelector('title').innerText='Register'
-      document.querySelector(".content").innerHTML = `
-<div class="content__title"><h1>Register</h1></div>
+    ElmConfirmPasswordError1.style.display = "none";
+    ElmConfirmPasswordError2.style.display = "none";
+    e.stopPropagation();
+  });
+  for (let i = 0; i < 2; i++) {
+    elementClassBtns[i].addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
 
-<label class="header-userName" for="userName"> User Name </label>
-<div  class="input-userName">
-<input minlength="7" maxlength="31" type="text" required name="userName" id="userName" placeholder="Type your username(from 7 to 31 character)"/>
- <i class="user-icon fas fa-user"></i>
-</div>
-<label class="header-password" for="password" >Password</label>
-<div class="input-password">
-<input minlength="7" maxlength="31" type="password" required name="password" id="password" placeholder="Type your password(from 7 to 31 character)"/>
-<i class="password-icon fas fa-lock"></i>
- <div class="view-icon">
-       <i class="far fa-eye-slash"></i>
- </div> 
- <label class="header-confirmPassword" for="confirmPassword" >Confirm Password</label>
- <div class="input-password-confirm">
-<input minlength="7" maxlength="31" type="password" required name="confirmPassword" id="confirmPassword" placeholder="Type your password(from 7 to 31 character)"/>
-<i class="password-icon fas fa-lock"></i>
- <div class="view-icon-confirm">
-       <i class="far fa-eye-slash"></i>
- </div> 
-</div>
-<div class="big-btn">
-  <div class="btn__bgColor"></div>
-  <input class="btn__login" type="submit" value="REGISTER">
-</div>
-</form>
-<div class="social">
-    <div class="socials__header"><p>Or Using</p></div>
-</div>
-<div class="social__container">
-<div class="social__item facebook-item">
-  <i class="social__facebook-icon fab fa-facebook-f"></i>
-  <p class="social__text">Facebook</p>
-</div>
-<div class="social__item google-item">
-  <i class="social__google-icon fab fa-google"></i>
-  <p class="social__text">Google</p>
-</div>
-<div class="social__item twitter-item">
-  <i class="social__twitter-icon fab fa-twitter"></i>
-  <p class="social__text">Twitter</p>
-</div>
-</div>
-<div class="create-account">
-  <p class="create-account__text">Already have an account?
-      <span id='link-convert-html' class="pagesLogIn-link">Log In</span>
-  </p>
-</div>
-
-`;
-      hoverElmClassBtn__bgColor();
-      changeViewIcon();
-      changeViewIconConfirmPassword();
-      tosSendInfoRegister();
-      hoverInputBorder();
-      toConvertLogin()
-    } 
-    // else {
-    //   document.querySelector(".content").innerHTML = pagesLogInHtml;
-    // }
-  };
+    getElmIdLinkCovertHtmls[i].addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+  }
 }
-//
-// 
-function toConvertLogin(){
-if(document.querySelector('.content__title').innerText=='Register'){
-  document.querySelector("#link-convert-html").onclick = function () {
-  document.querySelector('title').innerText='Login'
-  document.querySelector(".content").innerHTML = pagesLogInHtml;
-  hoverElmClassBtn__bgColor();
-  changeViewIcon();
-  changeViewIconConfirmPassword();
-  tosSendInfoRegister();
-  hoverInputBorder();
-  changeHTML();
-}}
-}
-toConvertLogin()
-hoverElmClassBtn__bgColor();
-changeViewIcon();
-changeHTML();
-tosSendInfoRegister();
-
-// var user_name = document.querySelector(".input-userName>input");
-// phải khai báo bên trong hàm ko gia trị =undefine;
-function checkInfoRegister() {
-  let user_name = document.querySelector(".input-userName>input").value;
-  let password = document.querySelector(".input-password>input").value;
-  let confirmPassword = document.querySelector(
-    ".input-password-confirm>input"
-  ).value;
-  return (
-    user_name.length > 6 &&
-    user_name.length < 32 &&
-    password.length > 6 &&
-    password.length < 32 &&
-    confirmPassword.length > 6 &&
-    confirmPassword.length < 32 &&
-    password === confirmPassword
-  );
-}
-
-function tosSendInfoRegister() {
-  if (document.querySelector(".content__title>h1").innerText == "Register") {
-    let user_name = document.querySelector(".input-userName>input").value;
-    let password = document.querySelector(".input-password>input").value;
-    let confirmPassword = document.querySelector(
-      ".input-password-confirm>input"
-    ).value;
-    // let containerHTML = document.querySelector(".container").innerHTML;
-    document.querySelector(".btn__login").onclick = function () {
-      if (checkInfoRegister()) {
-        document
-          .querySelector(".imageBgColor1")
-          .classList.remove("imageBgColor1");
-        document
-          .querySelector(".imageBgColor2")
-          .classList.remove("imageBgColor2");
-        document
-          .querySelector(".imageBgColor3")
-          .classList.remove("imageBgColor3");
-        document.querySelector(".main").style.backgroundImage =
-          "URL('anhnen.jpg')";
-        document.querySelector(".main").style.height = "100vh";
-        document.querySelector(".container").outerHTML =
-          '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">SUCCESS</h2>';
-      } 
-      else {
-        alert("Name or passwordWord or confirm is not correct !");
-        return;
-        // Dùng vòng lặp lồng nhau ko chay;
-        // if (userName.length > 6 && userName.length < 32==false) {
-        //   alert("Tên nhập vào chưa đúng");
-        // } else if (!password.length > 6 && password.length < 32) {
-        //   alert("Password nhập vào chưa đúng");
-        // } else if (!confirmPassword.length > 6 && confirmPassword.length < 32) {
-        //   alert("confirmPassword nhập vào chưa đúng");
-        // } else if (!password === confirmPassword) {
-        //   alert("Password và confirmPassword khác nhau");
-        // }
+// Hàm kiểm tra xem người dùng nhập tên vào nếu chưa đúng thì hiện thông báo lỗi.
+let ElmNameInputs = document.querySelectorAll(".userName");
+function checkUserName() {
+  for (let i = 0; i < 2; i++) {
+    elementClassBtns[i].addEventListener("click", function (even) {
+      if (ElmNameInputs[i].value.length == 0) {
+        even.preventDefault();
+        ElmNameError1s[i].style.display = "block";
+        setTimeout(function () {
+          ElmNameError1s[i].style.display = "none";
+        }, 7000);
+      } else if (
+        ElmNameInputs[i].value.length < 6 &&
+        ElmNameInputs[i].value.length > 0
+      ) {
+        even.preventDefault();
+        ElmNameError2s[i].style.display = "block";
+        setTimeout(function () {
+          ElmNameError2s[i].style.display = "none";
+        }, 7000);
       }
+    });
+  }
+}
+// Hàm kiểm tra xem người dùng nhập mật khẩu vào nếu chưa đúng thì hiện thông báo lỗi.
+let getElmPasswordInputs = document.querySelectorAll(".password");
+function checkPassword() {
+  for (let i = 0; i < 2; i++) {
+    elementClassBtns[i].addEventListener("click", function (even) {
+      if (getElmPasswordInputs[i].value.length == 0) {
+        even.preventDefault();
+        ElmPasswordError1s[i].style.display = "block";
+        setTimeout(function () {
+          ElmPasswordError1s[i].style.display = "none";
+        }, 7000);
+      } else if (
+        getElmPasswordInputs[i].value.length < 6&&
+        getElmPasswordInputs[i].value.length > 0
+      ) {
+        even.preventDefault();
+        ElmPasswordError2s[i].style.display = "block";
+        setTimeout(function () {
+          ElmPasswordError2s[i].style.display = "none";
+        }, 7000);
+      }
+    });
+  }
+}
+// Hàm kiểm tra xem người dùng nhập lại mật khẩu vào nếu chưa đúng thì hiện thông báo lỗi.
+let getElmConfirmPasswordInput = document.querySelector("#confirmPassword");
+function checkConfirmPassword() {
+  elementClassBtn__register.addEventListener("click", function (even) {
+    if (getElmConfirmPasswordInput.value.length == 0) {
+      even.preventDefault();
+      ElmConfirmPasswordError1.style.display = "block";
       setTimeout(function () {
-        alert("Register account success !");
-      }, 500);
+        ElmConfirmPasswordError1.style.display = "none";
+      }, 7000);
+    } else if (
+      getElmPasswordInputs[1].value != getElmConfirmPasswordInput.value
+    ) {
+      console.log("xn");
+      even.preventDefault();
+      ElmConfirmPasswordError2.style.display = "block";
+      setTimeout(function () {
+        ElmConfirmPasswordError2.style.display = "none";
+      }, 7000);
+    }
+  });
+}
+
+// hàm hiển thị mật khẩu hoặc ẩn đi cho phần nhập mật khẩu
+function changeViewIcon() {
+  let viewOns = document.querySelectorAll(".view-icon");
+  for (let i = 0; i < 2; i++) {
+    viewOns[i].onclick = function () {
+      if (viewOns[i].innerHTML.trim() == '<i class="far fa-eye-slash"></i>') {
+        viewOns[i].innerHTML = '<i class="far fa-eye"></i>';
+        getElmPasswordInputs[i].type = "text";
+      } else {
+        viewOns[i].innerHTML = '<i class="far fa-eye-slash"></i>';
+        getElmPasswordInputs[i].type = "password";
+      }
     };
   }
 }
+//// hàm hiển thị mật khẩu hoặc ẩn đi cho phần xác nhận lại mật khẩu
+function changeViewIconConfirmPassword() {
+  let getElmClassViewIconConfirm = document.querySelector(".view-icon-confirm");
+  let getElmInputConfirmPassword = document.getElementById("confirmPassword");
+  getElmClassViewIconConfirm.onclick = function () {
+    if (
+      getElmClassViewIconConfirm.innerHTML.trim() ==
+      '<i class="far fa-eye-slash"></i>'
+    ) {
+      getElmClassViewIconConfirm.innerHTML = '<i class="far fa-eye"></i>';
+      getElmInputConfirmPassword.type = "text";
+    } else {
+      getElmClassViewIconConfirm.innerHTML = '<i class="far fa-eye-slash"></i>';
+      getElmInputConfirmPassword.type = "password";
+    }
+  };
+}
+// Hàm thay đổi HTML của trang login thành  register
+let getElmTitle = document.querySelector("title");
+let getElmClassCreateAccountLink = document.querySelector(
+  ".create-account-link"
+);
+let getElmClassPagesLoginLink = document.querySelector(
+  ".pagesLogIn-link"
+);
+function toConvertRegister() {
+  getElmClassCreateAccountLink.onclick = function () {
+    getElmTitle.innerText = "Register";
+    getElmIdLogin.style.display = "none";
+    getElmIdRegister.style.display = "block";
+  };
+}
+//Hàm thay đổi HTML của trang register thành trang login
+function toConvertLogin() {
+  getElmClassPagesLoginLink.onclick = function () {
+    getElmTitle.innerText = "Log In";
+    getElmIdLogin.style.display = "block";
+    getElmIdRegister.style.display = "none";
+  };
+}
+//Hàm kiểm tra thông tin người dùng nhập vào để đăng kí đúng hay sai;
+let user_name = document.querySelectorAll(".input-userName>input")[1];
+let password = document.querySelectorAll(".input-password>input")[1];
+let confirmPassword = document.querySelector(
+  ".input-password-confirm>input"
+);
+function isCheckInfoRegister() {
+  console.log(password)
+  console.log(confirmPassword)
+  return (
+    user_name.value.length >= 6 &&
+    user_name.value.length < 32 &&
+    password.value.length >=6 &&
+    password.value.length < 32 &&
+    password.value == confirmPassword.value
+    
+  );
+}
+// hàm cho phép gửi dữ liệu vào thông báo đăng kí thành công nếu thông tin người dùng nhập vào đúng
+function tosSendInfoRegister() {
+  elementClassBtn__register.onclick = function (e) {
+    e.preventDefault();
+    if (isCheckInfoRegister()) {
+      document.querySelectorAll(".imageBgColor1")[1].classList.remove(
+        "imageBgColor1"
+      );
+      document.querySelectorAll(".imageBgColor2")[1].classList.remove(
+        "imageBgColor2"
+      );
+      document.querySelectorAll(".imageBgColor3")[1].classList.remove(
+        "imageBgColor3"
+      );
+      document.querySelector(".main").style.backgroundImage =
+        "URL('anhnen.jpg')";
+      document.querySelector(".main").style.height = "100vh";
+      document.querySelectorAll(".container")[1].outerHTML =
+        '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">SUCCESS</h2>';
+    
+    
+    setTimeout(function () {
+      alert("Register account success !");
+    }, 500);
+    
+  }
+}
+}
+
+checkUserName();
+checkPassword();
+checkConfirmPassword();
+closeNotify();
+changeViewIcon();
+changeViewIconConfirmPassword();
+hoverElmClassBtn__bgColor();
+tosSendInfoRegister();
+toConvertLogin();
+toConvertRegister();

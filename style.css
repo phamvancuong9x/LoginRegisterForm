@@ -1,251 +1,297 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333;
-}
-ul {
-  list-style-type: none;
-}
-a {
-  text-decoration: none;
-}
-label,
-input {
-  display: block;
-  width: 100%;
-}
-input {
-  height: 40px;
-  margin-bottom: 20px;
-  outline: none;
-  border-width: 0 0 2px 0;
-  border-style: solid;
-  border-color: #888;
-  color: #333;
-  padding-left: 20px;
-  font-size: 16px;
-  /* transition: 0.4s ease; */
-}
-.main {
-  overflow: hidden;
-  background-image: linear-gradient(45deg, #01dcde, #fc01fe);
-  background-size: 100% 100vh;
-  height: 100vh;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-.imageBgColor1 {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  background-color: RGBA(255, 255, 255, 0.1);
-  top: -10px;
-  left: -170px;
-  transform: rotate(60deg);
-}
-
-.imageBgColor2 {
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  background-color: RGBA(0, 0, 0, 0.1);
-  top: 55px;
-  right: -280px;
-  transform: rotate(60deg);
-}
-
-.imageBgColor3 {
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  background-color: RGBA(255, 255, 255, 0.1);
-  bottom: -360px;
-  left: 220px;
-  transform: rotate(60deg);
-}
-
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-.content {
-  padding: 40px 40px;
-  margin: auto;
-}
-.content__title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.content__title h1 {
-  font-size: 28px;
-}
-.input-password,
-.input-password-confirm,
-.input-userName {
-  position: relative;
-}
-.big-btn {
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-bottom: 20px;
-  height: 40px;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.btn__bgColor {
-  width: 200%;
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 40px;
-  background-image: linear-gradient(45deg, #01dcde, #fc01fe, #01dcde);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: all 400ms ease;
-}
-.btn__login {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #fff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-.btn__login :hover ~ .btn__bgColor {
-  left: -100%;
-}
-
-.user-icon,
-.password-icon {
-  color: #888;
-  position: absolute;
-  top: 10px;
-  left: 0;
-}
-.view-icon,
-.view-icon-confirm {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.view-icon:hover,
-.view-icon-confirm:hover {
-  background-color: rgb(221, 216, 216);
-}
-.view-icon > i,
-.view-icon-confirm > i {
-  color: #333;
-  cursor: pointer;
-}
-.forgot-password {
-  float: right;
-  color: #333;
-  margin-bottom: 20px;
-}
-.forgot-password:hover {
-  text-decoration: underline;
-}
-.socials__header {
-  text-align: center;
-  position: relative;
-}
-.socials__header::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 140px;
-  height: 16px;
-  border-width: 2px 0 0 0;
-  border-color: #888;
-  border-style: solid;
-}
-.socials__header::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 8px;
-  right: 0;
-  width: 140px;
-  height: 16px;
-  border-width: 2px 0 0 0;
-  border-color: #888;
-  border-style: solid;
-}
-.socials__header {
-  color: #888;
-}
-.social__container {
-  margin: 20px 0 40px 0;
-  display: flex;
-  justify-content: space-between;
-}
-.social__item {
-  display: flex;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.4s ease;
-}
-.social__item:hover {
-  opacity: 0.7;
-}
-.facebook-item {
-  background-color: blue;
-}
-.google-item {
-  background-color: red;
-}
-.twitter-item {
-  background-color: green;
-}
-.social__facebook-icon,
-.social__google-icon,
-.social__twitter-icon {
-  margin-right: 10px;
-  color: #fff;
-}
-.create-account {
-  text-align: center;
-}
-.social__text {
-  color: #fff;
-}
-.create-account-link,
-.pagesLogIn-link {
-  display: inline-block;
-  width: 80px;
-  height: 40px;
-  line-height: 40px;
-  cursor: pointer;
-  color: rgb(11, 97, 224);
-  text-decoration: underline;
-  transition: ease 0.4s;
-  background-color: transparent;
-}
-.create-account-link:hover,
-.pagesLogIn-link:hover {
-  opacity: 0.7;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+  }
+  ul {
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  label,
+  input {
+    display: block;
+    width: 100%;
+  }
+  input {
+    height: 40px;
+    margin-bottom: 20px;
+    outline: none;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: #888;
+    color: #333;
+    padding-left: 20px;
+    font-size: 16px;
+    /* transition: 0.4s ease; */
+  }
+  .displayBlock {
+    display: block;
+  }
+  .displayNone {
+    display: none;
+  }
+  .main {
+    overflow: hidden;
+    background-image: linear-gradient(45deg, #01dcde, #0291c9);
+    background-size: 100% 100vh;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  #Register{
+    display:none;
+  }
+  .imageBgColor1 {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    background-color: RGBA(255, 255, 255, 0.1);
+    top: -10px;
+    left: -170px;
+    transform: rotate(60deg);
+  }
+  
+  .imageBgColor2 {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    background-color: RGBA(0, 0, 0, 0.08);
+    top: 55px;
+    right: -280px;
+    transform: rotate(60deg);
+  }
+  
+  .imageBgColor3 {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    background-color: RGBA(255, 255, 255, 0.1);
+    bottom: -360px;
+    left: 220px;
+    transform: rotate(60deg);
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  .content {
+    padding: 40px 40px;
+    margin: auto;
+  }
+  .content__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .content__title h1 {
+    font-size: 28px;
+  }
+  .input-password,
+  .input-password-confirm,
+  .input-userName {
+    position: relative;
+  }
+  .notification-error {
+    min-width: 280px;
+    max-width: 380px;
+    z-index: 10;
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    padding: 5px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  .notification-error::after {
+    display: block;
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -7px;
+    left: 11px;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+  }
+  /* .header-confirmPassword {
+    display: none;
+  }
+  .input-password-confirm{
+    display: none;
+  } */
+  .error-icon {
+    font-size: 25px;
+    color: rgb(238, 130, 30);
+  }
+  .big-btn {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .btn__bgColor {
+    width: 200%;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 40px;
+    background-image: linear-gradient(45deg, #01dcde, #fc01fe, #01dcde);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 400ms ease;
+  }
+   .btn {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .btn :hover ~ .btn__bgColor {
+    left: -100%;
+  }
+  
+  .user-icon,
+  .password-icon {
+    color: #888;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+  .view-icon,
+  .view-icon-confirm {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .view-icon:hover,
+  .view-icon-confirm:hover {
+    background-color: rgb(221, 216, 216);
+  }
+  .view-icon > i,
+  .view-icon-confirm > i {
+    color: #333;
+    cursor: pointer;
+  }
+  .forgot-password {
+    float: right;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  .socials__header {
+    text-align: center;
+    position: relative;
+  }
+  .socials__header::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 140px;
+    height: 16px;
+    border-width: 2px 0 0 0;
+    border-color: #888;
+    border-style: solid;
+  }
+  .socials__header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 0;
+    width: 140px;
+    height: 16px;
+    border-width: 2px 0 0 0;
+    border-color: #888;
+    border-style: solid;
+  }
+  .socials__header {
+    color: #888;
+  }
+  .social__container {
+    margin: 20px 0 40px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .social__item {
+    display: flex;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s ease;
+  }
+  .social__item:hover {
+    opacity: 0.7;
+  }
+  .facebook-item {
+    background-color: blue;
+  }
+  .google-item {
+    background-color: red;
+  }
+  .twitter-item {
+    background-color: green;
+  }
+  .social__facebook-icon,
+  .social__google-icon,
+  .social__twitter-icon {
+    margin-right: 10px;
+    color: #fff;
+  }
+  .create-account {
+    text-align: center;
+  }
+  .social__text {
+    color: #fff;
+  }
+  .create-account-link,
+  .pagesLogIn-link {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    color: rgb(11, 97, 224);
+    text-decoration: underline;
+    transition: ease 0.4s;
+    background-color: transparent;
+  }
+  .create-account-link:hover,
+  .pagesLogIn-link:hover {
+    opacity: 0.7;
+  }
+  

@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="main">
+      <div id="login">
       <div class="imageBgColor1"></div>
       <div class="imageBgColor2"></div>
       <div class="imageBgColor3"></div>
@@ -23,21 +24,25 @@
           <form action="">
           <label class="header-userName" for="userName"> User Name </label>
           <div  class="input-userName">
-          <input minlength="7" maxlength="31" type="text" required name="userName" id="userName" placeholder="Type your username"/>
+          <input  type="text" name="userName" class="userName" placeholder="Enter username"/>
            <i class="user-icon fas fa-user"></i>
+           <div class="notification-error userName-error1"><i class="error-icon fas fa-exclamation-circle"></i> Vui lòng điền vào trường này</div>
+           <div class="notification-error userName-error2"><i class="error-icon fas fa-exclamation-circle"></i>Vui lòng nhập 6 kí tự trở lên</div>
         </div>
           <label class="header-password" for="password" >Password</label>
           <div class="input-password">
-          <input minlength="7" maxlength="31" type="password" required name="password " id="password" placeholder="Type your password"/>
+          <input type="password" name="password " class= 'password' placeholder="Enter password"/>
           <i class="password-icon fas fa-lock"></i>
            <div class="view-icon">
                  <i class="far fa-eye-slash"></i>
            </div> 
+           <div class="notification-error password-error1"><i class="error-icon fas fa-exclamation-circle"></i> Vui lòng điền vào trường này</div>
+           <div class="notification-error password-error2"><i class="error-icon fas fa-exclamation-circle"></i>Vui lòng nhập 6 kí tự trở lên</div>
         </div>
           <a href="#"class="forgot-password">Forgot password?</a>
           <div class="big-btn">
             <div class="btn__bgColor"></div>
-            <input class="btn__login" type="submit" value="LOGIN"/>
+            <input class="btn btn__login" type="submit" value="LOGIN"/>
           </div>
         </form>
           <div class="social">
@@ -58,13 +63,77 @@
           </div>
         </div>
         <div class="create-account">
-            <p class="create-account__text">Have not account yet?
-                <span id='link-convert-html' class="create-account-link">Register</span>
-            </p>
+            <span class="create-account__text">Have not account yet?</span> 
+                <span class='link-convert-html create-account-link'>Register</span>
         </div>
-        <script src="app.js"></script>
         </div>
       </div>
     </div>
+    <div id="Register">
+      <div class="imageBgColor1"></div>
+      <div class="imageBgColor2"></div>
+      <div class="imageBgColor3"></div>
+      <div class="container">
+        <div class="content">
+          <div class="content__title"><h1>Regiter</h1></div>
+          <form action="">
+          <label class="header-userName" for="userName"> User Name </label>
+          <div  class="input-userName">
+          <input  type="text" name="userName" class="userName" placeholder="Enter username"/>
+           <i class="user-icon fas fa-user"></i>
+           <div class="notification-error userName-error1"><i class="error-icon fas fa-exclamation-circle"></i> Vui lòng điền vào trường này</div>
+           <div class="notification-error userName-error2"><i class="error-icon fas fa-exclamation-circle"></i>Vui lòng nhập 6 kí tự trở lên</div>
+        </div>
+          <label class="header-password" for="password" >Password</label>
+          <div class="input-password">
+          <input type="password" name="password " class="password" placeholder="Enter password"/>
+          <i class="password-icon fas fa-lock"></i>
+           <div class="view-icon">
+                 <i class="far fa-eye-slash"></i>
+           </div> 
+           <div class="notification-error password-error1"><i class="error-icon fas fa-exclamation-circle"></i> Vui lòng điền vào trường này</div>
+           <div class="notification-error password-error2"><i class="error-icon fas fa-exclamation-circle"></i>Vui lòng nhập 7 kí tự trở lên</div>
+        </div>
+        <label class="header-confirmPassword" for="confirmPassword">Confirm Password</label>
+        <div class="input-password-confirm">
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Retype password"/>
+          <i class="password-icon fas fa-lock"></i>
+           <div class="view-icon-confirm">
+                 <i class="far fa-eye-slash"></i>
+           </div> 
+           <div class="notification-error confirm-password-error1"><i class="error-icon fas fa-exclamation-circle"></i> Vui lòng điền vào trường này</div>
+           <div class="notification-error confirm-password-error2"><i class="error-icon fas fa-exclamation-circle"></i>Mật khẩu nhập lại không khớp với nhau</div>      
+          </div>
+          <div class="big-btn">
+            <div class="btn__bgColor"></div>
+            <input class="btn btn__register" type="submit" value="Register"/>
+          </div>
+        </form>
+          <div class="social">
+              <div class="socials__header"><p>Or Using</p></div>
+          </div>
+          <div class="social__container">
+          <div class="social__item facebook-item">
+            <i class="social__facebook-icon fab fa-facebook-f"></i>
+            <p class="social__text">Facebook</p>
+          </div>
+          <div class="social__item google-item">
+            <i class="social__google-icon fab fa-google"></i>
+            <p class="social__text">Google</p>
+          </div>
+          <div class="social__item twitter-item">
+            <i class="social__twitter-icon fab fa-twitter"></i>
+            <p class="social__text">Twitter</p>
+          </div>
+        </div>
+        <div class="create-account">
+            <span class="create-account__text">Already have an account? </span> 
+                <span class="link-convert-html pagesLogIn-link">Login</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
   </body>
 </html>
