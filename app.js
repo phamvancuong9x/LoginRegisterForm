@@ -185,6 +185,7 @@ let password = document.querySelectorAll(".input-password>input")[1];
 let confirmPassword = document.querySelector(
   ".input-password-confirm>input"
 );
+// hàm check lại
 function isCheckInfoRegister() {
   console.log(password)
   console.log(confirmPassword)
@@ -225,6 +226,7 @@ function tosSendInfoRegister() {
   }
 }
 }
+// goi ham
 checkUserName();
 checkPassword();
 checkConfirmPassword();
