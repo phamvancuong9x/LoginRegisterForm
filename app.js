@@ -187,8 +187,6 @@ let confirmPassword = document.querySelector(
 );
 // hàm check lại
 function isCheckInfoRegister() {
-  console.log(password)
-  console.log(confirmPassword)
   return (
     user_name.value.length >= 6 &&
     user_name.value.length < 32 &&
