@@ -114,7 +114,6 @@ function checkConfirmPassword() {
     } else if (
       getElmPasswordInputs[1].value != getElmConfirmPasswordInput.value
     ) {
-      console.log("xn");
       even.preventDefault();
       ElmConfirmPasswordError2.style.display = "block";
       setTimeout(function () {
