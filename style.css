@@ -129,13 +129,8 @@
     border-style: solid;
     border-width: 1px 0 0 1px;
   }
-  /* .header-confirmPassword {
-    display: none;
-  }
-  .input-password-confirm{
-    display: none;
-  } */
   .error-icon {
+    margin-right: 5px;
     font-size: 25px;
     color: rgb(238, 130, 30);
   }

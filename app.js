@@ -6,7 +6,6 @@ let elementClassBtn__bgColor = document.querySelector(".btn__bgColor");
 let elementClassBtns = document.querySelectorAll(".btn");
 let elementClassBtn__bgColors = document.querySelectorAll(".btn__bgColor");
 let getElmIdLinkCovertHtmls = document.querySelectorAll(".link-convert-html");
-
 // hàm hover cho nút Login
 function hoverElmClassBtn__bgColor() {
   for (let i = 0; i < 2; i++) {
@@ -226,7 +225,6 @@ function tosSendInfoRegister() {
   }
 }
 }
-
 checkUserName();
 checkPassword();
 checkConfirmPassword();
