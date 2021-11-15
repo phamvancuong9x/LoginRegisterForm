@@ -237,7 +237,6 @@ input {
 .btn :hover ~ .btn__bgColor {
   left: -100%;
 }
-
 .user-icon,
 .password-icon {
   color: #888;
@@ -273,6 +272,9 @@ input {
 }
 .forgot-password:hover {
   text-decoration: underline;
+}
+.input-password-confirm{
+  margin-bottom: 55px;
 }
 .socials__header {
   text-align: center;
