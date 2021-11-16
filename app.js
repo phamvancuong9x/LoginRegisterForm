@@ -273,7 +273,9 @@ function checkAccountLogin(accounts) {
       if (ckeckAccount.length!=0){
         // console.log('pass')
             getElmIdLogin.style.display='none';
-            alert('Đăng nhập thành công')
+            document.querySelector('.main').innerHTML=`
+            <h1 style="text-align:center;line-height:100vh;color:#fff">LOG IN SUCCESS</h1>`
+            // alert('Đăng nhập thành công')
           }
     })
     // .then()
