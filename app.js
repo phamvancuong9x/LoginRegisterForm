@@ -271,7 +271,7 @@ function checkAccountLogin(accounts) {
     })
     .then(function(ckeckAccount){
       if (ckeckAccount.length!=0){
-        console.log('pass')
+        // console.log('pass')
             getElmIdLogin.style.display='none';
             alert('Đăng nhập thành công')
           }
@@ -296,8 +296,6 @@ function checkAccountLogin(accounts) {
       }
     });
     notifyErrorPasswordWithApi(ckeckPassWordAccount);
-
-    // 
     //  checkAccount= accounts.filter(function (account) {
     //   // console.log( account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value)
     //   if (
@@ -320,7 +318,7 @@ function login(checkAccount){
   console.log(ckeckAccount)
   console.log(ckeckAccount.length!=0)
   if (ckeckAccount.length!=0){
-console.log('pass')
+// console.log('pass')
     getElmIdLogin.style.display='none';
     alert('Đăng nhập thành công')
   }
@@ -330,7 +328,7 @@ function notifyErrorUsernameWithApi(ckeckAccount) {
   if (ElmNameInputs[0].value.length < 6) {
     return;
   } else if (ckeckAccount.length==0) {
-    ElmNameError3.style.display = "block";
+    ElmNameError3.style.display = "flex";
     setTimeout(function () {
       ElmNameError3.style.display = "none";
     }, 7000);
@@ -341,7 +339,7 @@ function notifyErrorPasswordWithApi(ckeckPassWordAccount) {
   if (getElmPasswordInputs[0].value.length < 6) {
     return;
   } else if (ckeckPassWordAccount.length==0) {
-    ElmPasswordError3.style.display = "block";
+    ElmPasswordError3.style.display = "flex";
     setTimeout(function () {
       ElmPasswordError3.style.display = "none";
     }, 7000);
