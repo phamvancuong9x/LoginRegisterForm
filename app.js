@@ -25,8 +25,10 @@ function hoverElmClassBtn__bgColor() {
 //Hàm click để  đóng các thông báo lỗi;
 let ElmNameError1s = document.querySelectorAll(".userName-error1");
 let ElmNameError2s = document.querySelectorAll(".userName-error2");
+let ElmNameError3 = document.querySelector(".userName-error3");
 let ElmPasswordError1s = document.querySelectorAll(".password-error1");
 let ElmPasswordError2s = document.querySelectorAll(".password-error2");
+let ElmPasswordError3 = document.querySelector(".password-error3");
 let ElmConfirmPasswordError1 = document.querySelector(
   ".confirm-password-error1"
 );
@@ -44,6 +46,8 @@ function closeNotify() {
       ElmPasswordError1s[i].style.display = "none";
       ElmPasswordError2s[i].style.display = "none";
     }
+    ElmNameError3.style.display = "none";
+    ElmPasswordError3.style.display = "none";
     ElmConfirmPasswordError1.style.display = "none";
     ElmConfirmPasswordError2.style.display = "none";
     e.stopPropagation();
@@ -231,52 +235,88 @@ tosSendInfoRegister();
 toConvertLogin();
 toConvertRegister();
 // hàm lấy dữ liệu từ api
-function getAccountApi(callback){
-fetch("http://localhost:3000/Account")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(callback)
+function getAccountApi() {
+  fetch("http://localhost:3000/Account")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(checkAccountLogin);
+  // .then(notifyErrorUsernameWithApi);
+  // .then(function(data){
+  //   console.log( data)
+  // })
 }
 
-function start(){
-  getAccountApi(checkAccount)
+function startLogin() {
+  getAccountApi();
 }
-start();
-let ckeckAccount;
+startLogin();
+let ckeckAccount=[];
+
 // callback thực hiên kiểm tra xem dữ liệu người dùng nhập vào với dữ liệu từ API
-function checkAccount(accounts) {
-  elementClassBtn__login.onclick = function () {
-    ckeckAccount = accounts.filter(function (account) {
+function checkAccountLogin(accounts) {
+  elementClassBtn__login.addEventListener("click", function () {
+  //
+    ckeckNameAccount = accounts.filter(function (account) {
       if (
-      account.name == ElmNameInputs[0].value &&
-       account.password == getElmPasswordInputs[0].value
+        account.name == ElmNameInputs[0].value
       ) {
         return account;
       }
     });
-    if (ckeckAccount.length!=0){
-      console.log("pass");
-    }
-  };
+    notifyErrorUsernameWithApi(ckeckNameAccount);
+// 
+    ckeckPassWordAccount = accounts.filter(function (account) {
+      if (
+        account.password == getElmPasswordInputs[0].value
+      ) {
+        return account;
+      }
+    });
+    notifyErrorPasswordWithApi(ckeckPassWordAccount)
+  });
 }
-// Ham gui du lieeu dang nhap nguoi dung len json sever
-function getValueAccountRegister(){
-  return {
-    name:ElmNameInputs[1].value,
-    password:getElmPasswordInputs[1].value
+// hàm hiện ra thông báo lỗi khi người dùng nhập sai username;
+function notifyErrorUsernameWithApi(ckeckAccount) {
+  if (ElmNameInputs[0].value.length < 6) {
+    return;
+  } else if (ckeckAccount.length==0) {
+    ElmNameError3.style.display = "block";
+    setTimeout(function () {
+      ElmNameError3.style.display = "none";
+    }, 7000);
+  }
+  // return ckeckAccount;
+}
+// hàm hiện ra thông báo lỗi khi người dùng nhập sai password;
+function notifyErrorPasswordWithApi(ckeckPassAccount) {
+  if (getElmPasswordInputs[0].value.length < 6) {
+    return;
+  } else if (ckeckPassWordAccount.length==0) {
+    ElmPasswordError3.style.display = "block";
+    setTimeout(function () {
+      ElmPasswordError3.style.display = "none";
+    }, 7000);
   }
 }
-function postApiAccount(){
-  fetch("http://localhost:3000/Account",{
-    method:'POST',
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify( getValueAccountRegister())
-  })
+// notifyErrorPasswordWithApi();
+// Ham gui du lieu dang nhap nguoi dung len json sever
+function getValueAccountRegister() {
+  return {
+    name: ElmNameInputs[1].value,
+    password: getElmPasswordInputs[1].value,
+  };
 }
-function createAccount(){
-  elementClassBtn__register.addEventListener('click',postApiAccount);
+function postApiAccount() {
+  fetch("http://localhost:3000/Account", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(getValueAccountRegister()),
+  });
+}
+function createAccount() {
+  elementClassBtn__register.addEventListener("click", postApiAccount);
 }
 createAccount();
