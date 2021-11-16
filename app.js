@@ -271,11 +271,11 @@ function checkAccountLogin(accounts) {
     })
     .then(function(ckeckAccount){
       if (ckeckAccount.length!=0){
-        // console.log('pass')
+        
             getElmIdLogin.style.display='none';
             document.querySelector('.main').innerHTML=`
             <h1 style="text-align:center;line-height:100vh;color:#fff">LOG IN SUCCESS</h1>`
-            // alert('Đăng nhập thành công')
+            alert('Đăng nhập thành công')
           }
     })
     // .then()
@@ -347,6 +347,7 @@ function notifyErrorPasswordWithApi(ckeckPassWordAccount) {
     }, 7000);
   }
 }
+
 // Ham gui du lieu dang nhap nguoi dung len json sever
 function getValueAccountRegister() {
   return {
@@ -355,6 +356,7 @@ function getValueAccountRegister() {
   };
 }
 function postApiAccount() {
+if(isCheckInfoRegister()){
   fetch("http://localhost:3000/Account", {
     method: "POST",
     headers: {
@@ -362,8 +364,9 @@ function postApiAccount() {
     },
     body: JSON.stringify(getValueAccountRegister()),
   });
-}
+}}
 function createAccount() {
+
   elementClassBtn__register.addEventListener("click", postApiAccount);
 }
 createAccount();
