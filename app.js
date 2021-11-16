@@ -256,8 +256,30 @@ let ckeckAccount=[];
 // callback thực hiên kiểm tra xem dữ liệu người dùng nhập vào với dữ liệu từ API
 function checkAccountLogin(accounts) {
   elementClassBtn__login.addEventListener("click", function () {
+    var promise=new Promise(function(resolve){
+      resolve(accounts)
+    });
+    promise
+    .then(function(){   
+      return  accounts.filter(function (account) {
+        if (
+          account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value
+        ) {
+          return account;
+        }
+      })
+    })
+    .then(function(ckeckAccount){
+      if (ckeckAccount.length!=0){
+        console.log('pass')
+            getElmIdLogin.style.display='none';
+            alert('Đăng nhập thành công')
+          }
+    })
+    // .then()
+    // .then()
   //
-    ckeckNameAccount = accounts.filter(function (account) {
+    let ckeckNameAccount = accounts.filter(function (account) {
       if (
         account.name == ElmNameInputs[0].value
       ) {
@@ -265,16 +287,43 @@ function checkAccountLogin(accounts) {
       }
     });
     notifyErrorUsernameWithApi(ckeckNameAccount);
-// 
-    ckeckPassWordAccount = accounts.filter(function (account) {
+
+    let ckeckPassWordAccount = accounts.filter(function (account) {
       if (
         account.password == getElmPasswordInputs[0].value
       ) {
         return account;
       }
     });
-    notifyErrorPasswordWithApi(ckeckPassWordAccount)
+    notifyErrorPasswordWithApi(ckeckPassWordAccount);
+
+    // 
+    //  checkAccount= accounts.filter(function (account) {
+    //   // console.log( account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value)
+    //   if (
+    //     account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value
+    //   ) {
+    //     return account;
+    //   }
+    // })
+    // setTimeout(login(checkAccount),5000)
+    // // console.log(ckeckAccount)
+    // if (ckeckAccount.length!=0){
+    //   console.log('pass')
+    //       getElmIdLogin.style.display='none';
+    //       alert('Đăng nhập thành công')
+    //     }
+    // login(checkAccount)
   });
+}
+function login(checkAccount){
+  console.log(ckeckAccount)
+  console.log(ckeckAccount.length!=0)
+  if (ckeckAccount.length!=0){
+console.log('pass')
+    getElmIdLogin.style.display='none';
+    alert('Đăng nhập thành công')
+  }
 }
 // hàm hiện ra thông báo lỗi khi người dùng nhập sai username;
 function notifyErrorUsernameWithApi(ckeckAccount) {
@@ -286,10 +335,9 @@ function notifyErrorUsernameWithApi(ckeckAccount) {
       ElmNameError3.style.display = "none";
     }, 7000);
   }
-  // return ckeckAccount;
 }
 // hàm hiện ra thông báo lỗi khi người dùng nhập sai password;
-function notifyErrorPasswordWithApi(ckeckPassAccount) {
+function notifyErrorPasswordWithApi(ckeckPassWordAccount) {
   if (getElmPasswordInputs[0].value.length < 6) {
     return;
   } else if (ckeckPassWordAccount.length==0) {
@@ -299,7 +347,6 @@ function notifyErrorPasswordWithApi(ckeckPassAccount) {
     }, 7000);
   }
 }
-// notifyErrorPasswordWithApi();
 // Ham gui du lieu dang nhap nguoi dung len json sever
 function getValueAccountRegister() {
   return {
