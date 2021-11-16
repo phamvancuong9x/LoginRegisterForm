@@ -260,3 +260,23 @@ function checkAccount(accounts) {
     }
   };
 }
+// Ham gui du lieeu dang nhap nguoi dung len json sever
+function getValueAccountRegister(){
+  return {
+    name:ElmNameInputs[1].value,
+    password:getElmPasswordInputs[1].value
+  }
+}
+function postApiAccount(){
+  fetch("http://localhost:3000/Account",{
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( getValueAccountRegister())
+  })
+}
+function createAccount(){
+  elementClassBtn__register.addEventListener('click',postApiAccount);
+}
+createAccount();
