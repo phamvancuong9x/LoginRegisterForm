@@ -6,6 +6,11 @@ let elementClassBtn__bgColor = document.querySelector(".btn__bgColor");
 let elementClassBtns = document.querySelectorAll(".btn");
 let elementClassBtn__bgColors = document.querySelectorAll(".btn__bgColor");
 let getElmIdLinkCovertHtmls = document.querySelectorAll(".link-convert-html");
+
+let ElmNameInputs = document.querySelectorAll(".userName");
+let getElmPasswordInputs = document.querySelectorAll(".password");
+let getElmConfirmPasswordInput = document.querySelector("#confirmPassword");
+
 // hàm hover cho nút Login
 function hoverElmClassBtn__bgColor() {
   for (let i = 0; i < 2; i++) {
@@ -54,7 +59,7 @@ function closeNotify() {
   }
 }
 // Hàm kiểm tra xem người dùng nhập tên vào nếu chưa đúng thì hiện thông báo lỗi.
-let ElmNameInputs = document.querySelectorAll(".userName");
+
 function checkUserName() {
   for (let i = 0; i < 2; i++) {
     elementClassBtns[i].addEventListener("click", function (even) {
@@ -78,7 +83,6 @@ function checkUserName() {
   }
 }
 // Hàm kiểm tra xem người dùng nhập mật khẩu vào nếu chưa đúng thì hiện thông báo lỗi.
-let getElmPasswordInputs = document.querySelectorAll(".password");
 function checkPassword() {
   for (let i = 0; i < 2; i++) {
     elementClassBtns[i].addEventListener("click", function (even) {
@@ -89,7 +93,7 @@ function checkPassword() {
           ElmPasswordError1s[i].style.display = "none";
         }, 7000);
       } else if (
-        getElmPasswordInputs[i].value.length < 6&&
+        getElmPasswordInputs[i].value.length < 6 &&
         getElmPasswordInputs[i].value.length > 0
       ) {
         even.preventDefault();
@@ -102,7 +106,6 @@ function checkPassword() {
   }
 }
 // Hàm kiểm tra xem người dùng nhập lại mật khẩu vào nếu chưa đúng thì hiện thông báo lỗi.
-let getElmConfirmPasswordInput = document.querySelector("#confirmPassword");
 function checkConfirmPassword() {
   elementClassBtn__register.addEventListener("click", function (even) {
     if (getElmConfirmPasswordInput.value.length == 0) {
@@ -160,9 +163,7 @@ let getElmTitle = document.querySelector("title");
 let getElmClassCreateAccountLink = document.querySelector(
   ".create-account-link"
 );
-let getElmClassPagesLoginLink = document.querySelector(
-  ".pagesLogIn-link"
-);
+let getElmClassPagesLoginLink = document.querySelector(".pagesLogIn-link");
 function toConvertRegister() {
   getElmClassCreateAccountLink.onclick = function () {
     getElmTitle.innerText = "Register";
@@ -181,18 +182,15 @@ function toConvertLogin() {
 //Hàm kiểm tra thông tin người dùng nhập vào để đăng kí đúng hay sai;
 let user_name = document.querySelectorAll(".input-userName>input")[1];
 let password = document.querySelectorAll(".input-password>input")[1];
-let confirmPassword = document.querySelector(
-  ".input-password-confirm>input"
-);
+let confirmPassword = document.querySelector(".input-password-confirm>input");
 // hàm check lại
 function isCheckInfoRegister() {
   return (
     user_name.value.length >= 6 &&
     user_name.value.length < 32 &&
-    password.value.length >=6 &&
+    password.value.length >= 6 &&
     password.value.length < 32 &&
     password.value == confirmPassword.value
-    
   );
 }
 // hàm cho phép gửi dữ liệu vào thông báo đăng kí thành công nếu thông tin người dùng nhập vào đúng
@@ -200,28 +198,26 @@ function tosSendInfoRegister() {
   elementClassBtn__register.onclick = function (e) {
     e.preventDefault();
     if (isCheckInfoRegister()) {
-      document.querySelectorAll(".imageBgColor1")[1].classList.remove(
-        "imageBgColor1"
-      );
-      document.querySelectorAll(".imageBgColor2")[1].classList.remove(
-        "imageBgColor2"
-      );
-      document.querySelectorAll(".imageBgColor3")[1].classList.remove(
-        "imageBgColor3"
-      );
+      document
+        .querySelectorAll(".imageBgColor1")[1]
+        .classList.remove("imageBgColor1");
+      document
+        .querySelectorAll(".imageBgColor2")[1]
+        .classList.remove("imageBgColor2");
+      document
+        .querySelectorAll(".imageBgColor3")[1]
+        .classList.remove("imageBgColor3");
       document.querySelector(".main").style.backgroundImage =
         "URL('anhnen.jpg')";
       document.querySelector(".main").style.height = "100vh";
       document.querySelectorAll(".container")[1].outerHTML =
         '<h2 style="text-align:center;color:blue;font-size:50px;line-height:100vh">SUCCESS</h2>';
-    
-    
-    setTimeout(function () {
-      alert("Register account success !");
-    }, 500);
-    
-  }
-}
+
+      setTimeout(function () {
+        alert("Register account success !");
+      }, 500);
+    }
+  };
 }
 // goi ham
 checkUserName();
@@ -234,3 +230,33 @@ hoverElmClassBtn__bgColor();
 tosSendInfoRegister();
 toConvertLogin();
 toConvertRegister();
+// hàm lấy dữ liệu từ api
+function getAccountApi(callback){
+fetch("http://localhost:3000/Account")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(callback)
+}
+
+function start(){
+  getAccountApi(checkAccount)
+}
+start();
+let ckeckAccount;
+// callback thực hiên kiểm tra xem dữ liệu người dùng nhập vào với dữ liệu từ API
+function checkAccount(accounts) {
+  elementClassBtn__login.onclick = function () {
+    ckeckAccount = accounts.filter(function (account) {
+      if (
+      account.name == ElmNameInputs[0].value &&
+       account.password == getElmPasswordInputs[0].value
+      ) {
+        return account;
+      }
+    });
+    if (ckeckAccount.length!=0){
+      console.log("pass");
+    }
+  };
+}
