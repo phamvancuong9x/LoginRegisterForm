@@ -241,95 +241,68 @@ function getAccountApi() {
       return response.json();
     })
     .then(checkAccountLogin);
-  // .then(notifyErrorUsernameWithApi);
-  // .then(function(data){
-  //   console.log( data)
-  // })
 }
 
 function startLogin() {
   getAccountApi();
 }
 startLogin();
-let ckeckAccount=[];
+let ckeckAccount = [];
 
 // callback thực hiên kiểm tra xem dữ liệu người dùng nhập vào với dữ liệu từ API
 function checkAccountLogin(accounts) {
   elementClassBtn__login.addEventListener("click", function () {
-    var promise=new Promise(function(resolve){
-      resolve(accounts)
+    var promise = new Promise(function (resolve) {
+      resolve(accounts);
     });
     promise
-    .then(function(){   
-      return  accounts.filter(function (account) {
-        if (
-          account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value
-        ) {
-          return account;
-        }
-      })
-    })
-    .then(function(ckeckAccount){
-      if (ckeckAccount.length!=0){
-        
-            getElmIdLogin.style.display='none';
-            document.querySelector('.main').innerHTML=`
-            <h1 style="text-align:center;line-height:100vh;color:#fff">LOG IN SUCCESS</h1>`
-            alert('Đăng nhập thành công')
+      .then(function () {
+        return accounts.filter(function (account) {
+          if (
+            account.name == ElmNameInputs[0].value &&
+            account.password == getElmPasswordInputs[0].value
+          ) {
+            return account;
           }
-    })
-    // .then()
-    // .then()
-  //
+        });
+      })
+      .then(function (ckeckAccount) {
+        if (ckeckAccount.length != 0) {
+          getElmIdLogin.style.display = "none";
+          document.querySelector(".main").innerHTML = `
+            <h1 style="text-align:center;line-height:100vh;color:#fff">LOG IN SUCCESS</h1>`;
+          alert("Đăng nhập thành công");
+        }
+      });
     let ckeckNameAccount = accounts.filter(function (account) {
-      if (
-        account.name == ElmNameInputs[0].value
-      ) {
+      if (account.name == ElmNameInputs[0].value) {
         return account;
       }
     });
     notifyErrorUsernameWithApi(ckeckNameAccount);
 
     let ckeckPassWordAccount = accounts.filter(function (account) {
-      if (
-        account.password == getElmPasswordInputs[0].value
-      ) {
+      if (account.password == getElmPasswordInputs[0].value) {
         return account;
       }
     });
     notifyErrorPasswordWithApi(ckeckPassWordAccount);
-    //  checkAccount= accounts.filter(function (account) {
-    //   // console.log( account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value)
-    //   if (
-    //     account.name == ElmNameInputs[0].value&& account.password == getElmPasswordInputs[0].value
-    //   ) {
-    //     return account;
-    //   }
-    // })
-    // setTimeout(login(checkAccount),5000)
-    // // console.log(ckeckAccount)
-    // if (ckeckAccount.length!=0){
-    //   console.log('pass')
-    //       getElmIdLogin.style.display='none';
-    //       alert('Đăng nhập thành công')
-    //     }
-    // login(checkAccount)
   });
 }
-function login(checkAccount){
-  console.log(ckeckAccount)
-  console.log(ckeckAccount.length!=0)
-  if (ckeckAccount.length!=0){
-// console.log('pass')
-    getElmIdLogin.style.display='none';
-    alert('Đăng nhập thành công')
+function login(checkAccount) {
+  console.log(ckeckAccount);
+  console.log(ckeckAccount.length != 0);
+  if (ckeckAccount.length != 0) {
+    // console.log('pass')
+    getElmIdLogin.style.display = "none";
+    alert("Đăng nhập thành công");
   }
 }
 // hàm hiện ra thông báo lỗi khi người dùng nhập sai username;
 function notifyErrorUsernameWithApi(ckeckAccount) {
   if (ElmNameInputs[0].value.length < 6) {
     return;
-  } else if (ckeckAccount.length==0) {
+  } else if (ckeckAccount.length == 0) {
     ElmNameError3.style.display = "flex";
     setTimeout(function () {
       ElmNameError3.style.display = "none";
@@ -340,7 +313,7 @@ function notifyErrorUsernameWithApi(ckeckAccount) {
 function notifyErrorPasswordWithApi(ckeckPassWordAccount) {
   if (getElmPasswordInputs[0].value.length < 6) {
     return;
-  } else if (ckeckPassWordAccount.length==0) {
+  } else if (ckeckPassWordAccount.length == 0) {
     ElmPasswordError3.style.display = "flex";
     setTimeout(function () {
       ElmPasswordError3.style.display = "none";
@@ -356,17 +329,17 @@ function getValueAccountRegister() {
   };
 }
 function postApiAccount() {
-if(isCheckInfoRegister()){
-  fetch("http://localhost:3000/Account", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(getValueAccountRegister()),
-  });
-}}
+  if (isCheckInfoRegister()) {
+    fetch("http://localhost:3000/Account", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(getValueAccountRegister()),
+    });
+  }
+}
 function createAccount() {
-
   elementClassBtn__register.addEventListener("click", postApiAccount);
 }
 createAccount();
