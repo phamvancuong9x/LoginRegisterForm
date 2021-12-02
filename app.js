@@ -236,7 +236,7 @@ toConvertLogin();
 toConvertRegister();
 // hàm lấy dữ liệu từ api
 function getAccountApi() {
-  fetch("http://localhost:3000/Account")
+  fetch("https://api-json-sever.herokuapp.com/api/Account")
     .then(function (response) {
       return response.json();
     })
@@ -330,7 +330,7 @@ function getValueAccountRegister() {
 }
 function postApiAccount() {
   if (isCheckInfoRegister()) {
-    fetch("http://localhost:3000/Account", {
+    fetch("https://api-json-sever.herokuapp.com/api/Account", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
